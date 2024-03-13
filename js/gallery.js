@@ -59,20 +59,60 @@ const images = [
     preview:
       'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg',
     original:
-     'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
+      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
     description: 'Lighthouse Coast Sea',
   },
 ];
-document.querySelector('ul.gallery').addEventListener('click', function(event) {
-  if (event.target.tagName === 'IMG') {
-    const imageSrc = event.target.getAttribute('src'); // Отримуємо посилання на маленьке зображення
-    const imageData = images.find(img => img.preview === imageSrc); // Знаходимо об'єкт даних зображення за його попереднім посиланням
 
-    if (imageData) {
-      console.log('Посилання на велике зображення:', imageData.original);
-    } else {
-      console.log('Дані про зображення не знайдено');
+
+const gallery = document.querySelector(".gallery");
+
+function imageGallery() {
+  const image = images
+    .map(({ preview, original, description }) => {
+      return `<li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img
+          class="gallery-image"
+          src="${preview}"
+          data-source="${original}"
+          alt="${description}"
+        />
+      </a>
+    </li>`;
+    })
+    .join("\n");
+  gallery.innerHTML = image;
+
+  gallery.addEventListener("click", (e) => {
+    const targetImage = e.target;
+    if (targetImage.classList.contains("gallery-image")) {
+      e.preventDefault();
+      const largeImageSource = targetImage.getAttribute("data-source");
+      const imageAlt = targetImage.getAttribute("alt");
+      const instance = basicLightbox.create(
+        `
+          <img src="${largeImageSource}" alt="Large image: ${imageAlt}"/>
+        `,
+        {
+          onShow: (instance) => {
+            document.addEventListener("keydown", handleKeyPress);
+          },
+          onClose: (instance) => {
+            document.removeEventListener("keydown", handleKeyPress);
+          },
+        }
+      );
+
+      instance.show();
+
+      function handleKeyPress(event) {
+        if (event.key === "Escape") {
+          instance.close();
+        }
+      }
     }
-  }
-});
+  });
+}
 
+imageGallery();
