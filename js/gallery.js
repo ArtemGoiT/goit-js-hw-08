@@ -95,10 +95,10 @@ function imageGallery() {
           <img src="${largeImageSource}" alt="Large image: ${imageAlt}"/>
         `,
         {
-          onShow: (instance) => {
+          onShow: () => {
             document.addEventListener("keydown", handleKeyPress);
           },
-          onClose: (instance) => {
+          onClose: () => {
             document.removeEventListener("keydown", handleKeyPress);
           },
         }
