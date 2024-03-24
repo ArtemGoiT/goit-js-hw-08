@@ -7,7 +7,7 @@ li {
   list-style-type: none;
 }
 
-.gallery {
+.gellery {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -17,7 +17,7 @@ li {
   max-width: 1128px;
 }
 
-.gallery-image {
+.gellery-image {
   display: block;
   width: 360px;
   height: 200px;
