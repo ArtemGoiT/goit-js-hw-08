@@ -93,7 +93,7 @@ function imageGellery() {
     
      <img class="gellery-image" 
      src="${preview}" 
-     data-sourse="${original}" 
+     data-source="${original}" 
      alt="${description}" 
      />
      </a>
@@ -136,11 +136,11 @@ function handleImageClick(e) {
     //* Это позволяет реализовать кастомное поведение, например, открытие увеличенной версии изображения в модальном окне, без перехода на другую страницу.
     const largeImageSource = targetImage.dataset.source;
     //* Получаем значение атрибута 'data-source' из элемента 'targetImage'
-    const imageALT = targetImage.getAttribute("alt");
+    const imageAlt = targetImage.getAttribute("alt");
     //*  Получаем значение атрибута 'alt' из элемента 'targetImage'.
     //*    Атрибут 'alt' обычно используется для предоставления текстового описания изображения.
     const instance = basicLightbox.create(
-      `<img src="${largeImageSource}" alt= Large image: ${imageAlt}"/>`,
+      `<img src="${largeImageSource}" alt= Large image: "${imageAlt}"/>`,
       //* Эта строка создаёт новый экземпляр модального окна с изображением с использованием библиотеки Lightbox.
       // * В результате создаётся модальное окно с изображением, внутри которого будет размещён HTML-элемент <img>.
       // *Атрибуты src и alt этого элемента будут установлены в значения переменных ${ largeImageSource } и ${ imageAlt } соответственно.
