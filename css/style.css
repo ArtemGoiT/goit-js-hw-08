@@ -26,6 +26,6 @@ li {
   transition: transform 0.3s ease;
 }
 
-.gallery-image:hover {
+.gellery-image:hover {
   transform: scale(1.1);
 }

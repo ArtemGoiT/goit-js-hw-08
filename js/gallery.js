@@ -128,7 +128,7 @@ function handleImageClick(e) {
   //* вывод дополнительной информации об изображении и так далее.
 
   const targetImage = e.target;
-  if (targetImage.classList.contains("gallery-image")) {
+  if (targetImage.classList.contains("gellery-image")) {
     // *  В данном контексте targetImage представляет собой элемент, на котором произошло событие клика.
     //* Метод classList.contains("gallery-image") возвращает true, если у этого элемента есть класс "gallery-image", и false в противном случае.
     e.preventDefault();
