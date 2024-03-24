@@ -97,7 +97,7 @@ function imageGellery() {
      alt="${description}" 
      />
      </a>
-     </li>;`;
+     </li>`;
       }
     )
     .join("\n");
